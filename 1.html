@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeFi & 稳定币 PM - 旗舰优化版 (W1-W2)</title>
+    <style>
+        :root {
+            --primary: #0f766e;
+            --primary-light: #f0fdfa;
+            --accent: #0d9488;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --border: #e5e7eb;
+            --bg: #f3f4f6;
+            --check-bg: #ffffff;
+            --buffer-bg: #fffbeb;
+        }
+        body { font-family: "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); margin: 0; padding: 20px; line-height: 1.6; }
+        .page { max-width: 850px; margin: 0 auto 40px; background: #fff; padding: 50px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); page-break-after: always; border-top: 8px solid var(--primary); position: relative;}
+        .page.buffer-day { border-top: 8px solid #f59e0b; background: var(--buffer-bg); }
+        h1 { color: var(--text-main); font-size: 26px; border-bottom: 2px solid var(--border); padding-bottom: 12px; margin-top: 0;}
+        .meta { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; display: flex; justify-content: space-between;}
+        .tag-bonus { background: #fef08a; color: #b45309; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; margin-left: 8px; vertical-align: middle;}
+        .goal-box { background: var(--primary-light); border-left: 5px solid var(--accent); padding: 18px; margin: 24px 0; border-radius: 6px; color: var(--primary); font-weight: 600; font-size: 15px;}
+        .buffer-day .goal-box { background: #fef3c7; border-left-color: #f59e0b; color: #b45309; }
+        h2 { font-size: 18px; color: var(--text-main); margin-top: 35px; display: flex; align-items: center; gap: 8px; border-left: 4px solid var(--primary); padding-left: 10px;}
+        .buffer-day h2 { border-left-color: #f59e0b; }
+        .task-list { padding-left: 20px; color: var(--text-main); font-size: 15px; }
+        .task-list li { margin-bottom: 8px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.03); border-radius: 8px; overflow: hidden;}
+        th { background: #f9fafb; color: var(--text-main); padding: 14px; text-align: left; border: 1px solid var(--border); font-weight: 600;}
+        td { padding: 14px; border: 1px solid var(--border); color: var(--text-main); vertical-align: top; }
+        td:nth-child(1) { font-family: monospace; font-weight: bold; color: var(--primary); }
+        a { color: var(--primary); text-decoration: none; word-break: break-all; font-weight: 500;}
+        a:hover { text-decoration: underline; }
+        .checkbox-list { list-style: none; padding-left: 0; background: var(--check-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px;}
+        .checkbox-list li { margin-bottom: 14px; color: var(--text-main); display: flex; align-items: flex-start; font-size: 15px;}
+        .checkbox-list input[type="checkbox"] { margin-top: 5px; margin-right: 14px; transform: scale(1.3); accent-color: var(--primary); cursor: pointer;}
+        
+        @media print {
+            body { background: white; padding: 0; }
+            .page { box-shadow: none; border: none; padding: 20px 0; margin: 0; }
+            a { text-decoration: none; color: black; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script>
+    function linkify(text) {
+        return text.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>');
+    }
+
+    function processTags(text) {
+        return text.replace(/\[进阶\]/g, '<span class="tag-bonus">进阶 Bonus</span>');
+    }
+
+    function splitPipes(text) {
+        return text ? text.split('|').map(s => s.trim()).filter(s => s) :[];
+    }
+
+    const rawData = `
+Day 1（周一）- 账本第一性原理：比特币如何工作
+[Goal] 建立“区块链为何能在不信任环境里记账”的第一性原理：哈希承诺、链式结构、工作量
+[Must] 能用 3 句话解释为什么改历史记录会越来越难 | 能说清区块里最关键的 3 个字段是什么 | 能用 5 分钟复盘：哈希承诺、链式结构、工作量如何解决双花。 | 能画出简单转账的用户/资金流。
+[Docs] 3Blue1Brown：Bitcoin 课程页面 — https://www.3blue1brown.com/lessons/bitcoin | Bitcoin Whitepaper（官方 PDF） — https://bitcoin.org/bitcoin.pdf
+[Vids] 3Blue1Brown：But how does bitcoin actually work? — https://www.youtube.com/watch?v=bBC-nXj3Ng4
+[Tasks] 打开 Mempool 浏览器（https://mempool.space/），任选 1 个最近区块：记录区块高度、出块时间、交易数。 | 点进任意 1 笔交易：标出 inputs/outputs，找出 UTXO 在后续被花费的证据。 | 用 30 秒口述：PoW + 最长链规则为什么能抵御双花。
+[Output] 用 1 页纸写出：区块链解决的核心问题、PoW 如何让改账本变贵（配手绘图）。
+
+Day 2（周二）- 状态模型碰撞：UTXO (BTC) vs 账户模型 (ETH)
+[Goal] 掌握两种账本状态模型的差异，推导它们对“产品体验/隐私/并发/手续费”的影响。
+[Must] 能解释 UTXO 的找零机制 | 能解释为什么账户模型更适合 DeFi 状态机（合约） | 能对比两种模型对并发和隐私的影响。 | [进阶] 了解 Solana 账户模型的差异。
+[Docs] River：Bitcoin UTXO model — https://river.com/learn/bitcoin-utxo-model/ | Solana 官方：Account Model — https://solana.com/docs/core/accounts
+[Vids] UTXO vs Account Model Explained — https://www.youtube.com/results?search_query=utxo+vs+account+model
+[Tasks] 在区块浏览器里找 1 笔 BTC 交易，写出“花费条件”是什么（用自然语言）。 | [进阶] 查阅资料，写出 Solana 的账户数据与执行逻辑分离机制。 | 写 1 段 100 字：UTXO 模型 vs 账户模型对 PM 意味着什么。
+[Output] 做一张对比表：BTC(UTXO) vs ETH(Account) vs Solana(Account)（状态存储、并发、隐私、费用）。
+
+Day 3（周三）- 交易计费：EVM Gas vs Solana Compute Fee
+[Goal] 理解 Web3 计费机制，掌握 EVM 的 EIP-1559 与 Solana 极低手续费/高并发的设计差异。[Must] 能解释为什么 EVM 交易在不同时间手续费差很多 | 能说清 EIP-1559 的 Base fee 与 Priority fee | 能解释 Solana 为什么比 ETH 快且便宜（局部费用市场） | 能在产品设计中考虑滑点与 Gas 预估
+[Docs] Ethereum.org：Gas and fees — https://ethereum.org/en/developers/docs/gas/ | Solana Local Fee Markets — https://solana.com/news/solana-local-fee-markets
+[Vids] Ethereum Gas Fees (EIP-1559) — https://www.youtube.com/watch?v=aOhH6mCGyFg
+[Tasks] 在 Etherscan 任选 1 笔近期交易：记录并解释 gas used、base fee、priority fee。 | 在 Solscan (https://solscan.io/) 找 1 笔交易，对比其费用与 ETH 的差距。 | 1 分钟口述：EIP-1559 为什么 burn Base fee？
+[Output] 写一段“给用户看的网络费用解释文案”（含以太坊主网与 Solana 的对比）。
+
+Day 4（周四）- 钱包、密钥与链抽象基础
+[Goal] 把“地址-公钥-私钥-助记词-签名”讲成故事，并理解链抽象（Chain Abstraction）趋势如何隐藏这些复杂性。
+[Must] 说清 EOA vs 合约账户的区别 | 解释 HD 钱包派生路径（BIP39/32/44） | 区分“签名消息”与“发送交易” | [进阶] 解释链抽象如何让用户“无感使用多链”
+[Docs] EIP-55（Checksum Address） — https://eips.ethereum.org/EIPS/eip-55 | MetaMask：SRP 备份 — https://support.metamask.io/ | Chain Abstraction Vision — https://frontier.tech/chain-abstraction
+[Vids] Whiteboard Crypto：BIP39 Explained — https://www.youtube.com/watch?v=tqJhY6kB3Zw
+[Tasks] 新建 1 个钱包，记录 BIP-44 路径逻辑。 | 签名 1 条消息（Sign message），在验签工具中验证并截图。 | 写 1 段 150 字：为什么未来的 Web3 产品必须走向“链抽象”（免 Gas、免切链）。
+[Output] 产出《钱包与签名安全产品提示规范 v1》：包含助记词警告、签名风险提示。
+
+Day 5（周五）- 链上侦查与数据解剖：Etherscan & Solscan
+[Goal] 能在区块浏览器上从 0 还原一次 DeFi 交互：调用了谁、传了什么参数、触发了什么事件。
+[Must] 指出一笔 Swap 交易的关键流转（Transfer）在哪里看 | 说清 Input Data / Instruction Data 是什么 | 能看懂 Event Logs / Inner Instructions
+[Docs] Ethereum.org：Transactions — https://ethereum.org/en/developers/docs/transactions/ | Etherscan Docs — https://docs.etherscan.io/
+[Vids] Etherscan Tutorial — https://www.youtube.com/watch?v=qA9MioFs5kg
+[Tasks] 在 Etherscan 找 1 笔 ERC-20 Transfer：截图并解释 Transaction、Logs、Token Transfers。 | 打开某 Tx 的 Input Data，用解码器（Tx-decoder）转为可读参数。 |[进阶] 在 Solscan 找一笔 Raydium Swap 交易，查看代币转移流。
+[Output] 交易解剖笔记：手写一笔真实交易的“数据发生全过程”（包含合约地址、方法、参数）。
+
+Day 6（周六）- 第一周实战作品输出：钱包/基础交互体验拆解
+[Goal] 把本周的极客知识（账本、Gas、签名、区块数据）转化为产品经理的“交互设计体验案”。
+[Must] 能白板讲清从用户点击 UI 到链上确认的全流程 | 梳理出至少 3 个用户容易流失的“死亡节点”（Gas不足、网络拥堵等）
+[Docs] 综合复习本周所有笔记
+[Vids] 无额外视频，集中精力输出
+[Tasks] 挑一个主流 DApp（如 Uniswap），完成一次 Swap（或测试网模拟）。 | 记录全流程的等待时间、钱包弹窗次数、错误提示。 | 将 Day 1 - Day 5 的核心概念做成 10 张面试复习闪卡（Anki/Notion）。
+[Output] 作品集 #1：《Web3 交易防踩坑与交互体验优化案》（含 3 个用户痛点及 PM 视角的改进策略）。
+
+Day 7（周日）- 弹性缓冲与 Build in Public
+[Type] Buffer[Goal] 让大脑休息发酵，补齐欠债进度；建立你的 Web3 PM 个人品牌影响力。
+[Tasks] 睡个好觉，今天不看任何复杂的硬核代码逻辑。 | 补齐周一到周六未能完成的任务或作品。 | 在 Twitter(X) 或即刻/Mirror 发布一条 Thread：“我转行 Web3 PM 的第一周：账本与底层的 3 个认知颠覆”，带上 #BuildInPublic 标签。
+[Output] 一条公开发布的社交媒体动态（开始吸引同频的人与潜在雇主）。
+
+Day 8（周一）- 金融状态机与测试网 QA 实操
+[Goal] 理解智能合约的不可逆性，并掌握 PM 必备的 Testnet 领水、Tenderly 交易模拟等 QA 技能。
+[Must] 能解释为什么合约 Bug 往往是致命的 | 知道如何在测试网（Sepolia）进行测试 | 能用 Tenderly 模拟一笔交易以测试风控逻辑
+[Docs] Solidity 官方文档 — https://docs.soliditylang.org/ | Tenderly Docs (Transaction Simulation) — https://docs.tenderly.co/
+[Vids] Smart Contracts Explained — https://www.youtube.com/watch?v=ZE2HxTmxzEE
+[Tasks] 在 Sepolia 测试网用 Faucet 领水，部署或交互一个开源测试合约。 | 把一笔主网失败的交易 Hash 丢进 Tenderly，查看失败原因（Revert 报错定位）。 | 写出智能合约的“确定性与不可篡改”对产品上线的 3 个硬约束。
+[Output] 产出《Web3 产品测试与验收 SOP》：包含测试网验证、Tenderly 模拟测试、多签发版流程。
+
+Day 9（周二）- 前后端架构：On-chain vs Off-chain Trade-offs
+[Goal] 能够和研发团队对齐系统架构，知道哪些业务放链上，哪些放链下，以及如何结合 Web2.5 埋点。
+[Must] 能解释为什么不是所有数据都要上链（Gas/隐私/延迟） | 能说清 The Graph / 索引器的作用 | 掌握结合 Dune（链上）与 Mixpanel（前端）的数据追踪思路
+[Docs] The Graph Docs — https://thegraph.com/docs/ | Web2.5 Analytics Guide — https://mixpanel.com/blog/web3-analytics/
+[Vids] On-chain vs Off-chain Architecture — https://www.youtube.com/results?search_query=web3+architecture+on+chain+off+chain
+[Tasks] 画 1 张包含 前端 UI -> 后端 DB -> 索引器 -> 区块链 的全栈数据流向图。 | 思考一题：如果你的产品要展示“用户历史交易收益率”，这个计算过程应该放在前端、自建后端还是直接读链上合约？写出 Trade-off。
+[Output] 架构评估文档：用 1 页纸写清一个功能的“上链 vs 链下”决策逻辑及依据。
+
+Day 10（周三）- 资产基石：ERC-20 (EVM) vs SPL (Solana) 
+[Goal] 掌握最核心的代币标准，了解 EVM 授权逻辑与 Solana 关联代币账户（ATA）的差异。
+[Must] 解释 ERC-20 的 transfer 与 approve/transferFrom | 解释 Solana SPL 的 ATA (Associated Token Account) 概念 | 说清为什么 ERC-20 经常需要两次弹窗，而原生币/部分新链不需要
+[Docs] EIP-20 — https://eips.ethereum.org/EIPS/eip-20 | Solana SPL Token — https://spl.solana.com/token
+[Vids] ERC-20 Explained — https://www.youtube.com/watch?v=JW7334gOZ34
+[Tasks] 在 Etherscan 调用某 ERC-20 合约的 totalSupply 与 balanceOf。 | 查阅 Solana SPL 文档，写 3 句话解释什么是 ATA（避免资产转错地址的机制）。 | 思考：稳定币 USDT 在以太坊和 Solana 上的使用体验差异是什么？
+[Output] 画一张“授权-代扣-扣款”的时序图（含用户、代币合约、协议业务合约）。
+
+Day 11（周四）- 授权风险与无 Gas 体验：Approve 盗币与 Permit
+[Goal] 理解 Web3 最大的安全资产流失口（无限授权），并学会用 EIP-2612 (Permit) 提升 UX。
+[Must] 解释 unlimited approval 为什么危险及产品层如何防护 | 解释 Permit（链下签名+链上执行）如何实现无 Gas 授权 | 知道什么是 Domain Separator 与 Nonce 防止重放攻击
+[Docs] EIP-2612 (Permit) — https://eips.ethereum.org/EIPS/eip-2612 | Revoke.cash (取消授权工具) — https://revoke.cash/
+[Vids] EIP-2612 Permit Explained — https://www.youtube.com/results?search_query=EIP-2612+permit+explained
+[Tasks] 用 Revoke.cash 检查你的钱包，找出无限授权记录（截图 1 张）。 | 在 Uniswap 找一笔带 Permit 的交易，分析其如何将 Approve 和 Swap 压缩在一次上链中。 | 写出产品默认“精确授权”与“无限授权”的利弊。
+[Output] 《授权与 Permit 交互规范》：何时请求无限授权、何时引导 Permit、如何做风险阻断提示。
+
+Day 12（周五）- 前沿演进：账户抽象 (AA) 与 意图 (Intents)
+[Goal] 站在 2026 年前沿：理解 ERC-4337、EIP-7702 以及 Intent-centric 架构如何彻底重塑 Web3 交互。
+[Must] 解释 Bundler 与 Paymaster 在代付 Gas 中的作用 | 了解 EIP-7702 如何让普通 EOA 临时拥有智能合约功能 | 理解“意图（Intent）”与“交易（Tx）”的区别（我要结果 vs 我要执行路径）
+[Docs] ERC-4337 Docs — https://eips.ethereum.org/EIPS/eip-4337 | Paradigm: Intent-centric Architecture — https://www.paradigm.xyz/2023/06/intents
+[Vids] Account Abstraction & EIP-7702 — https://www.youtube.com/results?search_query=Account+Abstraction+EIP-7702+explained
+[Tasks] 拆解一个实现了 Gasless（免 Gas）交易的产品（如 Biconomy / ZeroDev 案例）。 | 用大白话（非技术词汇）写一段：为什么未来 Web3 产品的北极星指标是“隐藏所有区块链复杂性”。
+[Output] 调研分析报告：《从 Transaction 到 Intent：2026 Web3 产品交互体验的范式转移》。
+
+Day 13（周六）- 第二周实战作品：DApp 系统设计与安全验收
+[Goal] 融合本周的智能合约、前后端架构、测试与代币逻辑，产出一份完整的系统设计与安全防坑方案。[Must] 能将复杂机制转化为产品文档 | 能定义产品的安全红线与验收标准
+[Docs] 综合复习本周所有笔记。
+[Vids] 无额外视频，集中精力打磨作品集。
+[Tasks] 将本周所有错题、高频知识点（ATA、Permit、Tenderly、Gasless）做成 10 张复习卡片。 | 假设你是一支 Web3 团队的 PM，准备发布一个新的 DeFi 质押产品，列出你的上线前 Checklist。
+[Output] 作品集 #2：《Web3 产品系统架构与发布前安全审查 Checklist（PM 视角）》（涵盖前端、合约依赖、测试网验证、授权风控）。
+
+Day 14（周日）- 弹性缓冲与 Build in Public
+[Type] Buffer
+[Goal] 梳理前两周核心知识，保持良好的精力管理，持续对外输送专业度。
+[Tasks] 去户外走走，远离屏幕 2 小时。 | 整理 Week 1 和 Week 2 的作品集 PDF 并在本地归档。 | 在社交媒体发布 Thread：“转行 Web3 PM 的第二周：为什么不懂智能合约和 QA 测试，写出来的 PRD 都是灾难”，带上你的作品集截图和 #Web3PM 标签。
+[Output] 第二周的社交媒体复盘与公域发声（可能已经有同行来找你探讨了！）。
+    `.trim().split('\n\n');
+
+    const container = document.getElementById('app');
+
+    rawData.forEach((block) => {
+        const lines = block.split('\n');
+        const title = lines[0];
+        const data = {};
+        let isBuffer = false;
+        
+        for(let i=1; i<lines.length; i++) {
+            let match = lines[i].match(/^\[(.*?)\] (.*)$/);
+            if(match) {
+                data[match[1]] = match[2];
+                if(match[1] === 'Type' && match[2] === 'Buffer') isBuffer = true;
+            }
+        }
+
+        if(isBuffer) {
+            const tasksArr = splitPipes(data.Tasks);
+            let html = `
+            <div class="page buffer-day">
+                <h1>☕ ${title}</h1>
+                <div class="meta">建议用时：弹性安排 | 计划版本：2026 旗舰优化版</div>
+                <div class="goal-box">
+                    🌱 <b>今日策略：</b>${processTags(data.Goal)}
+                </div>
+                <h2>🎯 恢复与输出任务</h2>
+                <ul class="checkbox-list">
+                    ${tasksArr.map(item => `<li><input type="checkbox"> ${processTags(item)}</li>`).join('')}
+                </ul>
+                <h2>🚀 核心产出</h2>
+                <div style="background: white; padding: 15px; border-radius: 6px; border: 1px dashed #f59e0b;">
+                    <b>${processTags(data.Output)}</b>
+                </div>
+            </div>`;
+            container.innerHTML += html;
+            return;
+        }
+
+        const mustArr = splitPipes(data.Must);
+        const docsArr = splitPipes(data.Docs);
+        const vidsArr = splitPipes(data.Vids);
+        const tasksArr = splitPipes(data.Tasks);
+        
+        let html = `
+        <div class="page">
+            <h1>${title}</h1>
+            <div class="meta">建议用时：约 210 分钟 | 计划版本：2026 旗舰优化版</div>
+
+            <div class="goal-box">
+                🎯 <b>学完目标：</b>${processTags(data.Goal)}
+            </div>
+
+            <h2>✅ 今日必会（核心校验）</h2>
+            <ul class="task-list">
+                ${mustArr.map(item => `<li>${processTags(item)}</li>`).join('')}
+            </ul>
+
+            <h2>📚 学习资源</h2>
+            <p><b>📄 必读文档/检索：</b></p>
+            <ul class="task-list">
+                ${docsArr.map(item => `<li>${linkify(item)}</li>`).join('')}
+            </ul>
+            <p><b>📺 视频输入：</b></p>
+            <ul class="task-list">
+                ${vidsArr.length && vidsArr[0] !== '无额外视频，集中精力输出' ? vidsArr.map(item => `<li>${linkify(item)}</li>`).join('') : '<li><i>今日为实战打磨日，无强制视频输入。</i></li>'}
+            </ul>
+
+            <h2>🛠 动手实操（必做）</h2>
+            <ul class="task-list">
+                ${tasksArr.map(item => `<li>${processTags(linkify(item))}</li>`).join('')}
+            </ul>
+
+            <h2>⏳ 效率时间表（建议节奏）</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="16%">时间段</th>
+                        <th width="48%">要做什么（知识点/实操）</th>
+                        <th width="36%">应该收获什么（颗粒度产出）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>00:00-00:10</td>
+                        <td>复盘昨日错题；写下今天 3 个待解疑问。</td>
+                        <td>3 个焦点问题 + 进入状态</td>
+                    </tr>
+                    <tr>
+                        <td>00:10-00:55</td>
+                        <td><b>高浓度输入：</b><br>观看视频并粗读文档，建立直觉与脉络。</td>
+                        <td>机制运转的因果链（大白话版）</td>
+                    </tr>
+                    <tr>
+                        <td>00:55-01:35</td>
+                        <td><b>深读与笔记：</b><br>精读底层文档，抓取核心参数、边界条件与报错限制。</td>
+                        <td>10条关键笔记/术语 + 架构草图</td>
+                    </tr>
+                    <tr>
+                        <td>01:35-01:50</td>
+                        <td><b>间隔休息与巩固：</b><br>制作 Notion/Anki 记忆闪卡。</td>
+                        <td>恢复精力，固化知识</td>
+                    </tr>
+                    <tr>
+                        <td>01:50-02:40</td>
+                        <td><b>动手验证（核心）：</b><br>进入测试网或浏览器，对照文档进行真实数据查验。</td>
+                        <td>验证截图 + 发现理论与实际的差别</td>
+                    </tr>
+                    <tr>
+                        <td>02:40-03:15</td>
+                        <td><b>高价值产出：</b><br>梳理成可用于面试的作品集材料。</td>
+                        <td><b>当日交付物：</b><br>${data.Output}</td>
+                    </tr>
+                    <tr>
+                        <td>03:15-03:30</td>
+                        <td><b>闭卷自测：</b><br>看下方的清单，对着墙壁讲出答案并录音。</td>
+                        <td>暴露盲点，完成学习闭环</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>📝 闭卷自测清单（完成打勾）</h2>
+            <ul class="checkbox-list">
+                ${mustArr.map(item => {
+                    let text = item.replace(/^能/, '');
+                    return `<li><input type="checkbox"> <b>[概念]</b> ${processTags(text)}</li>`;
+                }).join('')}
+                <li><input type="checkbox"> <b>[产品化]</b> 如果让你设计涉及该机制的产品，列出 3 个致命风险点与防御策略。</li>
+                <li><input type="checkbox"> <b>[表达]</b> 你能否向不涉及 Web3 的互联网产品同事，用 2 分钟讲清楚这个机制？</li>
+                <li><input type="checkbox"> <b>[交付]</b> 检查当日产出 <b>《${data.Output.substring(0,25)}...》</b> 是否逻辑严密且排版美观。</li>
+            </ul>
+        </div>
+        `;
+        
+        container.innerHTML += html;
+    });
+</script>
+</body>
+</html>
