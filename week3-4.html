@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>60天 DeFi & 稳定币 PM 学习计划 | Week 3-4 完整版</title>
+    <style>
+        :root {
+            --primary: #1E3A8A;
+            --secondary: #2563EB;
+            --accent: #10B981;
+            --bg-main: #F4F7F6;
+            --bg-card: #FFFFFF;
+            --text-main: #334155;
+            --text-light: #64748B;
+            --border: #E2E8F0;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+            background-color: var(--bg-main); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            padding: 2rem 1rem; 
+        }
+        
+        .container { max-width: 900px; margin: 0 auto; }
+        
+        .header { text-align: center; margin-bottom: 3rem; }
+        .header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 800; }
+        .header p { color: var(--text-light); font-size: 1.05rem; }
+        
+        .week-title { 
+            font-size: 1.8rem; 
+            color: var(--primary); 
+            border-bottom: 3px solid var(--primary); 
+            padding-bottom: 0.5rem; 
+            margin: 3rem 0 2rem 0; 
+            font-weight: 700;
+        }
+        
+        .day-card { 
+            background: var(--bg-card); 
+            border: 1px solid var(--border); 
+            border-radius: 12px; 
+            padding: 2rem; 
+            margin-bottom: 2rem; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); 
+            transition: box-shadow 0.2s ease;
+        }
+        .day-card:hover { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); }
+        
+        .day-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; border-bottom: 1px dashed var(--border); padding-bottom: 1rem;}
+        .day-title { font-size: 1.35rem; font-weight: 700; color: var(--primary); }
+        .time-badge { background: #EEF2FF; color: var(--secondary); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; white-space: nowrap; margin-left: 1rem;}
+        
+        .target-box { background: #F8FAFC; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; color: #475569; font-weight: 500; }
+        
+        .section-title { font-size: 1.1rem; font-weight: 600; color: var(--secondary); margin: 1.5rem 0 0.5rem 0; display: flex; align-items: center; }
+        .section-title::before { content: ''; display: inline-block; width: 4px; height: 16px; background-color: var(--secondary); margin-right: 8px; border-radius: 2px;}
+        
+        ul { margin-left: 1.5rem; color: var(--text-main); }
+        li { margin-bottom: 0.4rem; }
+        
+        ol { margin-left: 1.5rem; color: var(--text-main); }
+        ol li { margin-bottom: 0.4rem; }
+
+        a { color: var(--secondary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        /* 2026 行业环境补齐模块样式 */
+        .extension-box { 
+            background: #ECFDF5; 
+            border-left: 5px solid var(--accent); 
+            padding: 1.5rem; 
+            border-radius: 0 8px 8px 0; 
+            margin-top: 2rem; 
+        }
+        .extension-title { color: #047857; font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;}
+        .extension-box ul { color: #065F46; }
+        .extension-box a { color: #047857; font-weight: 600; text-decoration: underline; }
+        .pm-scenario { background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px; margin-top: 1rem; font-size: 0.95rem; color: #064E3B; border: 1px dashed #6EE7B7; font-weight: 500;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>60天 DeFi & 稳定币 PM 学习计划</h1>
+        <p>（Week 3-4 原文完整保留 + 2026 行业真实环境精准补齐）</p>
+    </div>
+
+    <!-- WEEK 3 -->
+    <h2 class="week-title">Week 3：DeFi 核心组件 1：DEX / AMM / MEV（交易侧）</h2>
+
+    <!-- Day 15 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 15（周一）- DeFi 乐高全景图：DEX / Lending / Derivatives /</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>把 DeFi 的核心组件画成“系统地图”，并能说清它们之间的依赖关系（例如 stablecoin 如何驱动
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能说清 DEX/Lending/Stablecoin 三者如何相互喂养 TVL</li>
+            <li>能列出 5 个常见风险：合约/预言机/MEV/流动性/治理</li>
+            <li>能用 5 分钟复盘：把 DeFi 的核心组件画成系统地图，并能说清它们之间的依赖关系 （例如 stablecoin 如何驱动 DEX/Lending）。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://ethereum.org/en/defi/" target="_blank">Ethereum.org：DeFi（概览）</a></li>
+            <li>[文档] <a href="https://docs.uniswap.org/" target="_blank">Uniswap Docs（官方）</a></li>
+            <li>[文档] <a href="https://aave.com/docs" target="_blank">Aave Docs（官方）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/@Finematics/search?query=DeFi%20explained" target="_blank">DeFi 基础概览（Finematics频道内检索 DeFi explained）</a></li>
+        </ul>
+
+        <!-- 2026 补齐模块 -->
+        <div class="extension-box">
+            <div class="extension-title">🟢 2026 行业环境补齐：质押 (Staking) 与再质押 (Restaking) 成为新底层乐高</div>
+            <p><strong>背景补充：</strong>2026年的 DeFi 乐高底座已经不再是纯粹的 ETH 或稳定币，而是 <strong>LST (流动性质押代币，如 stETH)</strong> 和 <strong>LRT (流动性再质押代币，如 eETH)</strong>。生息资产作为抵押物重塑了所有协议的收益率。</p>
+            <ul>
+                <li>[新增必会] 能解释 Lido (stETH) 是如何释放锁定 ETH 流动性的。</li>
+                <li>[新增必会] 理解 EigenLayer (再质押) 带来的共享安全逻辑以及随之而来的协议连环清算风险。</li>
+                <li>[资源] <a href="https://docs.lido.fi/" target="_blank">Lido Docs: How Liquid Staking Works</a></li>
+                <li>[资源] <a href="https://docs.eigenlayer.xyz/" target="_blank">EigenLayer Docs: Intro to Restaking & AVS</a></li>
+            </ul>
+            <div class="pm-scenario">
+                <strong>💡 PM 实战拷问：</strong>在你的 DeFi 宏观系统地图中，如果一笔存入 Aave 的 stETH 遭遇了底层以太坊验证节点的 Slashing（被罚没）导致 stETH 脱锚（1 stETH < 1 ETH），你的稳定币借贷市场会发生怎样的连锁反应？
+            </div>
+        </div>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>用 DeFiLlama 对比 3 个协议的 TVL、链分布、赛道（DEX/借贷/稳定币），截图 1 张并写 3 个观察结论。</li>
+            <li>写 1 页：DeFi 产品的“乐高组合”思维（资产→交易→借贷→收益→风险）。</li>
+            <li>准备 1 个你后续要深挖的协议（Uniswap/Aave/Maker…）作为“长期样本”。</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请说明：DEX/Lending/Stablecoin 三者如何相互喂养 TVL</li>
+            <li>请解释：能列出 5 个常见风险：合约/预言机/MEV/流动性/治理</li>
+            <li>请说明： 5 分钟复盘：把 DeFi 的核心组件画成系统地图，并能说清它们之间的依赖关系 （例如 stablecoin 如何驱动 DEX/Lending）</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「用 DeFiLlama 对比 3 个协议的 TVL、链分布、赛道（DEX/借贷/稳定币），截图 1 张并写 3 个观察结论」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 页：DeFi 产品的“乐高组合”思维（资产→交易→借贷→收益→风险）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「准备 1 个你后续要深挖的协议（Uniswap/Aave/Maker…）作为“长期样本”」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「DeFi 乐高全景图：DEX / Lending / Derivatives /」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 16 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 16（周二）- 流动性池与 AMM：为什么不需要订单簿也能交易</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>掌握 AMM 的定价与滑点直觉，并能把它转成产品里的“价格影响/最小收到/滑点保护”。
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能解释 xy=k 的含义（直觉）</li>
+            <li>能说清为什么大额交易更容易滑点大</li>
+            <li>能用 5 分钟复盘：掌握 AMM 的定价与滑点直觉，并能把它转成产品里的价格影响/最小收到/滑点保护。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://uniswap.org/whitepaper.pdf" target="_blank">Uniswap V2 Whitepaper PDF</a></li>
+            <li>[文档] <a href="https://docs.uniswap.org/" target="_blank">Uniswap Docs（官方）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/watch?v=cizLhxSKrAc" target="_blank">How do Liquidity Pools work?（Finematics, YouTube）</a></li>
+        </ul>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>在 Uniswap 上任选 1 个 v2 风格池（或参考 v2 概念）：写出 x*y=k 的含义与价格如何由储备决定。</li>
+            <li>把同一资产对在不同 DEX 的价格对比一下：解释套利为什么能让价格趋同。</li>
+            <li>输出 1 张“AMM 交易流程图”：用户 swap → 池子状态变化 → LP 收。</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能解释 xy=k 的含义（直觉）</li>
+            <li>请说明：为什么大额交易更容易滑点大</li>
+            <li>请说明： 5 分钟复盘：掌握 AMM 的定价与滑点直觉，并能把它转成产品里的价格影响/最小收到/滑点保护</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「在 Uniswap 上任选 1 个 v2 风格池（或参考 v2 概念）：写出 x*y=k 的含义与价格如何由储备决定」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「把同一资产对在不同 DEX 的价格对比一下：解释套利为什么能让价格趋同」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「输出 1 张“AMM 交易流程图”：用户 swap → 池子状态变化 → LP 收」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「流动性池与 AMM：为什么不需要订单簿也能交易」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 17 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 17（周三）- 无常损失（IL）：LP 为什么会亏？什么时候不亏？</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>能向非金融同学解释 IL，并能把 IL 风险翻译成产品提示/收益展示方式。 Web3 / DeFi / 稳定币
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能解释为什么价格回到原点 IL 会消失（但不一定赚钱）</li>
+            <li>能说清 IL 与手续费收入的权衡</li>
+            <li>能用 5 分钟复盘：能向非金融同学解释 IL，并能把 IL 风险翻译成产品提示/收益展示方式。 Web3 / DeFi / 稳定币产品经理 8 周成长路线（可落地版） 第 9 页</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://docs.uniswap.org/" target="_blank">Uniswap Docs（官方）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/@Finematics/search?query=impermanent%20loss" target="_blank">Finematics：Impermanent Loss（频道内检索）</a></li>
+        </ul>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>用任意 IL 计算器（搜索 'impermanent loss calculator'）：选 50/50 池，分别算价格变化 +50%、+100%、-50% 时 IL。截图 1 张。</li>
+            <li>写 1 段：为什么高波动资产更容易让 LP 不划算？</li>
+            <li>补充：LP 的收益来源拆成 3 部分（交易、激、价格波）。</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能解释为什么价格回到原点 IL 会消失（但不一定赚钱）</li>
+            <li>请说明：IL 与手续费收入的权衡</li>
+            <li>请解释：IL，并能把 IL 风险翻译成产品提示/收益展示方式。 Web3 / DeFi / 稳定币产品经理 8 周成长路线（可落地版） 第 9 页</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「用任意 IL 计算器（搜索 'impermanent loss calculator'）：选 50/50 池，分别算价格变化 +50%、+100%、-50% 时 IL。截图 1 张」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 段：为什么高波动资产更容易让 LP 不划算？」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「补充：LP 的收益来源拆成 3 部分（交易、激、价格波）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「无常损失（IL）：LP 为什么会亏？什么时候不亏？」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 18 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 18（周四）- Uniswap V3：集中流动性带来的新 UX/新风险</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>理解 V3 的 range/position/NFT LP，并能指出它对产品的影响（更复杂的 LP 管理、更高本效率）。
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能解释为什么 V3 LP 需要管理而不是存入就完</li>
+            <li>能说明集中流动性如何降低滑点（在范围内）</li>
+            <li>能用 5 分钟复盘：理解 V3 的 range/position/NFT LP，并能指出它对产品的影响 （更复杂的 LP 管理、更高资本效率）。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://uniswap.org/whitepaper-v3.pdf" target="_blank">Uniswap V3 Whitepaper PDF</a></li>
+            <li>[文档] <a href="https://docs.uniswap.org/" target="_blank">Uniswap Docs（官方）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/watch?v=Ehm-OYBmlPM" target="_blank">Uniswap V3 Explained（Finematics, YouTube）</a></li>
+        </ul>
+
+        <!-- 2026 补齐模块 -->
+        <div class="extension-box">
+            <div class="extension-title">🟢 2026 行业环境补齐：Uniswap V4 Hooks 与高性能链 AMM</div>
+            <p><strong>背景补充：</strong>2026 年，Uniswap V4 带来的 <strong>Hooks（钩子机制）</strong>让流动性池可高度定制化（如内置限价单、动态费用、TWAMM），同时 Solana 上的 Raydium/Meteora 等 AMM 大爆发。</p>
+            <ul>
+                <li>[新增必会] 理解 V4 Hooks 是什么（在 swap 之前/之后执行自定义合约逻辑）。</li>
+                <li>[资源] <a href="https://docs.uniswap.org/concepts/uniswap-v4/hooks" target="_blank">Uniswap V4 Docs: Hooks Architecture</a></li>
+                <li>[视频] <a href="https://www.youtube.com/results?search_query=Uniswap+V4+Hooks+explained" target="_blank">YouTube: Uniswap V4 Hooks Explained</a></li>
+            </ul>
+            <div class="pm-scenario">
+                <strong>💡 PM 实战拷问：</strong>如果你的团队准备在 Uniswap V4 上发币，为了防止抢跑机器人 (MEV) 攫取用户的买盘价值，你该如何设计一个 `beforeSwap` 的 Hook 拦截异常的滑点交易？
+            </div>
+        </div>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>在 Uniswap v3 UI 打开一个池：观察 price range/ticks/深度分布（Depth），写下“集中流动性”带来的好处和坑。</li>
+            <li>解释：为什么 v3 LP 需要“做市策略”（而不是无脑存入）？</li>
+            <li>画 1 张 v2 vs v3 对比表（费用/资本效率/LP 风险/用户滑点）。</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能解释为什么 V3 LP 需要管理而不是存入就完</li>
+            <li>请解释：能说明集中流动性如何降低滑点（在范围内）</li>
+            <li>请说明： 5 分钟复盘：理解 V3 的 range/position/NFT LP，并能指出它对产品的影响 （更复杂的 LP 管理、更高资本效率）</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「在 Uniswap v3 UI 打开一个池：观察 price range/ticks/深度分布（Depth），写下“集中流动性”带来的好处和坑」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「解释：为什么 v3 LP 需要“做市策略”（而不是无脑存入）？」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「画 1 张 v2 vs v3 对比表（费用/资本效率/LP 风险/用户滑点）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「Uniswap V3：集中流动性带来的新 UX/新风险」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 19 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 19（周五）- Curve & StableSwap：稳定币互换为什么更便宜</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>掌握 StableSwap 的核心思路（在 1:1 附近更低滑点），并理解稳定币/封装资产交易的路由逻辑。
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能解释为什么稳定币池的曲线和普通 AMM 不一样（直觉）</li>
+            <li>能说清peg 偏离时StableSwap 会发生什么</li>
+            <li>能用 5 分钟复盘：掌握 StableSwap 的核心思路（在 1:1 附近更低滑点），并理解稳定币/封装资产交易的路由逻辑。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://curve.fi/files/stableswap-paper.pdf" target="_blank">Curve StableSwap Paper PDF</a></li>
+            <li>[视频] <a href="https://www.youtube.com/@Finematics/search?query=Curve%20stableswap" target="_blank">Finematics：Curve/StableSwap（频道内检索）</a></li>
+        </ul>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>打开一个 Curve 稳定币池页面：观察价格曲线更“平”的原因（StableSwap）。</li>
+            <li>写 1 段：稳定币池的主要风险来自哪里（脱锚、资产质量、治理参数、外部收益）。</li>
+            <li>对比：为什么稳定币 DEX 的设计和波动资产 DEX 不一样？</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能解释为什么稳定币池的曲线和普通 AMM 不一样（直觉）</li>
+            <li>请说明：peg 偏离时StableSwap 会发生什么</li>
+            <li>请说明： 5 分钟复盘：掌握 StableSwap 的核心思路（在 1:1 附近更低滑点），并理解稳定币/封装资产交易的路由逻辑</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「打开一个 Curve 稳定币池页面：观察价格曲线更“平”的原因（StableSwap）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 段：稳定币池的主要风险来自哪里（脱锚、资产质量、治理参数、外部收益）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「对比：为什么稳定币 DEX 的设计和波动资产 DEX 不一样？」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「Curve & StableSwap：稳定币互换为什么更便宜」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 20 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 20（周六）- MEV 与三明治：为什么你总买在高点卖在低点</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>理解 MEV 供应链（searcher/builder/proposer），并把它落到产品策略 （私有交易、滑
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能解释三明治攻击的基本流程（不需要代码）</li>
+            <li>能说清为什么提高滑点会更危险而不是更安全</li>
+            <li>能用 5 分钟复盘：理解 MEV 供应链（searcher/builder/proposer），并把它落到产品策略（私有交易、滑点、保护路由）。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://docs.flashbots.net/" target="_blank">Flashbots Docs（MEV 生态）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/watch?v=F9IuBZGseFQ" target="_blank">Decoding MEV: Past, Present & Future（Finematics, YouTube）</a></li>
+        </ul>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>找 1 个 MEV 案例（sandwich/arbitrage）：写清“谁在前、谁在后、谁受损、谁获益”。</li>
+            <li>写 1 张“产品对策卡”：滑点保护、私有交易、批量撮合、RFQ/Intent 等分别怎么缓解 MEV。</li>
+            <li>把 MEV 视角纳入你后续产品设计的非功能需求清单。</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能解释三明治攻击的基本流程（不需要代码）</li>
+            <li>请说明：为什么提高滑点会更危险而不是更安全</li>
+            <li>请说明： 5 分钟复盘：理解 MEV 供应链（searcher/builder/proposer），并把它落到产品策略（私有交易、滑点、保护路由）</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「找 1 个 MEV 案例（sandwich/arbitrage）：写清“谁在前、谁在后、谁受损、谁获益”」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 张“产品对策卡”：滑点保护、私有交易、批量撮合、RFQ/Intent 等分别怎么缓解 MEV」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「把 MEV 视角纳入你后续产品设计的非功能需求清单」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「MEV 与三明治：为什么你总买在高点卖在低点」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 21 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 21（周日）- Week 3 复盘：做一份 DEX Teardown（像面试作品）</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>把 DEX 的机制理解转化为 PM 作品：拆解、指标、问题、方案。
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能用 10 分钟讲完你的 Teardown（结构清晰）</li>
+            <li>能回答你提的方案如何验证有效 Web3 / DeFi / 稳定币产品经理 8 周成长路线（可落地版） 第 11 页第 4 周：DeFi 核心组件 2：借贷与风控（协议侧） 本周交付物：作品集 #4：Lending Teardown + 风控参数方案 + Runbook</li>
+            <li>能用 5 分钟复盘：把 DEX 的机制理解转化为 PM 作品：拆解、指标、问题、方案。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://docs.uniswap.org/" target="_blank">Uniswap Docs（官方）</a></li>
+            <li>[文档] <a href="https://curve.fi/files/stableswap-paper.pdf" target="_blank">Curve StableSwap Paper PDF</a></li>
+            <li>[文档] <a href="https://docs.flashbots.net/" target="_blank">Flashbots Docs（MEV 生态）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/@Finematics" target="_blank">Finematics（DeFi 系列视频/文章）</a></li>
+        </ul>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>完成 DEX/AMM 拆解报告：至少包含 Uniswap v2/v3/Curve 的机制差异、用户体验差异、风险点。</li>
+            <li>在 Dune/DeFiLlama 找 2 个指标（交易量、手续费、LP APR 等）为你的结论提供证据。</li>
+            <li>做 10 张面试卡：AMM、IL、v3 ticks、MEV。</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请说明： 10 分钟讲完你的 Teardown（结构清晰）</li>
+            <li>请解释：能回答你提的方案如何验证有效... 本周交付物：作品集 #4：Lending Teardown + 风控参数方案 + Runbook</li>
+            <li>请说明： 5 分钟复盘：把 DEX 的机制理解转化为 PM 作品：拆解、指标、问题、方案</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「完成 DEX/AMM 拆解报告：至少包含 Uniswap v2/v3/Curve 的机制差异、用户体验差异、风险点」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「在 Dune/DeFiLlama 找 2 个指标（交易量、手续费、LP APR 等）为你的结论提供证据」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「做 10 张面试卡：AMM、IL、v3 ticks、MEV」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「Week 3 复盘：做一份 DEX Teardown（像面试作品）」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- WEEK 4 -->
+    <h2 class="week-title" style="margin-top: 3rem;">Week 4：借贷与风控机制（协议侧）</h2>
+
+    <!-- Day 22 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 22（周一）- 借贷协议是怎么运转的：超额抵押、利率、健康度</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>掌握借贷的基本状态机：存款->借款->利率变化->健康度->清算。
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能解释为什么 DeFi 借贷通常要求超额抵押</li>
+            <li>能说清健康度下降到阈值会发生什么</li>
+            <li>能用 5 分钟复盘：掌握借贷的基本状态机：存款->借款->利率变化->健康度->清算。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://aave.com/docs" target="_blank">Aave Docs（官方）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/@Finematics/search?query=lending%20liquidation" target="_blank">Aave/借贷与清算（Finematics频道内检索 lending liquidation）</a></li>
+        </ul>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>打开 Aave UI：观察存款、借款、健康因子（HF）计算逻辑（不必真的入金，先理解界面）。</li>
+            <li>写 1 张“借贷产品用户旅程”：存→借→利息累积→清算风险→还款/补仓。</li>
+            <li>列出 PM 需要设置的 5 个关键参数（LTV、LT、利率曲线、清算奖励、borrow cap）。</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能解释为什么 DeFi 借贷通常要求超额抵押</li>
+            <li>请说明：健康度下降到阈值会发生什么</li>
+            <li>请说明： 5 分钟复盘：掌握借贷的基本状态机：存款->借款->利率变化->健康度->清算</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「打开 Aave UI：观察存款、借款、健康因子（HF）计算逻辑（不必真的入金，先理解界面）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 张“借贷产品用户旅程”：存→借→利息累积→清算风险→还款/补仓」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「列出 PM 需要设置的 5 个关键参数（LTV、LT、利率曲线、清算奖励、borrow cap）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「借贷协议是怎么运转的：超额抵押、利率、健康度」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 23 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 23（周二）- 风控参数：LTV / Liquidation Threshold / Reserve Factor</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>理解风险参数如何影响协议安全与增长（更高 LTV=更高增长也更高清算风险）。
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能解释清算奖励为什么需要足够高</li>
+            <li>能说清 reserve factor 对协议收入的影响</li>
+            <li>能用 5 分钟复盘：理解风险参数如何影响协议安全与增长（更高 LTV=更高增长也更高清算风险）。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://aave.com/docs" target="_blank">Aave Docs（官方）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/@Finematics/search?query=lending%20liquidation" target="_blank">Aave/借贷与清算（Finematics频道内检索 lending liquidation）</a></li>
+        </ul>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>阅读 Aave 的利率模型说明：画出 utilization(利用率) 与 borrow APR 的关系（分段/拐点）。</li>
+            <li>写 1 段：为什么 supply APR < borrow APR？差额去哪了？（协议收入/因子）。</li>
+            <li>做 1 个参数讨论：如果想“拉高存款”或“抑制借款”，你会调哪些参数？</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能解释清算奖励为什么需要足够高</li>
+            <li>请说明：reserve factor 对协议收入的影响</li>
+            <li>请说明： 5 分钟复盘：理解风险参数如何影响协议安全与增长（更高 LTV=更高增长也更高清算风险）</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「阅读 Aave 的利率模型说明：画出 utilization(利用率) 与 borrow APR 的关系（分段/拐点）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 段：为什么 supply APR < borrow APR？差额去哪了？（协议收入/因子）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「做 1 个参数讨论：如果想“拉高存款”或“抑制借款”，你会调哪些参数？」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「风控参数：LTV / Liquidation Threshold / Reserve Factor」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 24 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 24（周三）- 清算机制：谁来清算？清算怎么盈利？用户怎么被保护？</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>能从产品视角描述清算：用户通知、缓冲机制、坏账处理、极端行情下的保护。
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能解释为什么预言机延迟/操纵会导致错误清算</li>
+            <li>能说清坏账出现意味着什么（协议损失/社会化）</li>
+            <li>能用 5 分钟复盘：能从产品视角描述清算：用户通知、缓冲机制、坏账处理、极端行情下的保护。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://aave.com/help/liquidations-explained" target="_blank">Aave：Liquidations explained（官方帮助）</a></li>
+            <li>[文档] <a href="https://aave.com/docs" target="_blank">Aave Docs（官方）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/@Finematics/search?query=lending%20liquidation" target="_blank">Aave/借贷与清算（Finematics频道内检索 lending liquidation）</a></li>
+        </ul>
+
+        <!-- 2026 补齐模块 -->
+        <div class="extension-box">
+            <div class="extension-title">🟢 2026 行业环境补齐：LST/LRT 抵押品的“连环爆仓”危机</div>
+            <p><strong>背景补充：</strong>2026年，Aave 等借贷池里最大量的抵押品不再是纯 ETH，而是 <strong>eETH/stETH</strong> 这样的凭证代币。当市场闪崩时，LRT/LST 会相对 ETH 脱锚，引发严重的流动性清算旋涡。</p>
+            <ul>
+                <li>[新增必会] 理解 e-Mode (高效模式) 与隔离池 (Isolation Mode) 是如何切断不同资产清算传染的。</li>
+                <li>[资源] <a href="https://docs.aave.com/developers/whats-new/high-efficiency-mode-e-mode" target="_blank">Aave V3 Docs: e-Mode Architecture</a></li>
+                <li>[视频] <a href="https://www.youtube.com/results?search_query=Aave+isolation+mode+explained" target="_blank">YouTube: Aave Isolation Mode Explained</a></li>
+            </ul>
+            <div class="pm-scenario">
+                <strong>💡 PM 实战拷问：</strong>某新发行的生息代币 (sUSDe) 申请进入你的 Aave 借贷池作为抵押物，如果它的链上二级流动性池 (DEX) 只有 500 万美金深度，但协议允许用户借出 2000 万美金。在清算发生时，清算人卖不掉资产会怎样？你该如何使用 Supply Cap 来规避？
+            </div>
+        </div>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>在 Aave liquidation 文档里搞清：HF、LT、close factor、liquidation bonus 的含义。</li>
+            <li>找 1 笔真实清算交易（Etherscan）：截图并标注清算人拿走了什么、被清算人损失了什么。</li>
+            <li>写 1 段：清算机制如何把风险从协议转移到清算人/市？</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能解释为什么预言机延迟/操纵会导致错误清算</li>
+            <li>请说明：坏账出现意味着什么（协议损失/社会化）</li>
+            <li>请说明： 5 分钟复盘：能从产品视角描述清算：用户通知、缓冲机制、坏账处理、极端行情下的保护</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「在 Aave liquidation 文档里搞清：HF、LT、close factor、liquidation bonus 的含义」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「找 1 笔真实清算交易（Etherscan）：截图并标注清算人拿走了什么、被清算人损失了什么」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 段：清算机制如何把风险从协议转移到清算人/市？」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「清算机制：谁来清算？清算怎么盈利？用户怎么被保护？」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 25 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 25（周四）- 闪电贷（Flash Loan）：原子性、攻击面与防护</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>理解闪电贷的原子性与组合性，以及它在攻击/套利/清算里的双刃剑角色。
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能解释为什么闪电贷不需要抵押（因为不还就 revert）</li>
+            <li>能举例说明一种典型闪电贷攻击的关键薄弱点</li>
+            <li>能用 5 分钟复盘：理解闪电贷的原子性与组合性，以及它在攻击/套利/清算里的双刃角色。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://aave.com/docs" target="_blank">Aave Docs（官方）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/watch?v=mCJUhnXQ76s" target="_blank">Flash Loans Explained（Finematics, YouTube）</a></li>
+        </ul>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>找 1 笔 flash loan 交易（可从 Aave/DeFi hack 案例里找）：标出 borrowed asset、amount、premium、回调逻辑。</li>
+            <li>写 1 张“闪电贷攻击面卡”：预言机操纵、重入、价格影响、治理攻击等。</li>
+            <li>把“原子性”解释成一句话，并举 2 个正当用例（套利、再融资）。</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能解释为什么闪电贷不需要抵押（因为不还就 revert）</li>
+            <li>请解释：能举例说明一种典型闪电贷攻击的关键薄弱点</li>
+            <li>请说明： 5 分钟复盘：理解闪电贷的原子性与组合性，以及它在攻击/套利/清算里的双刃角色</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「找 1 笔 flash loan 交易（可从 Aave/DeFi hack 案例里找）：标出 borrowed asset、amount、premium、回调逻辑」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 张“闪电贷攻击面卡”：预言机操纵、重入、价格影响、治理攻击等」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「把“原子性”解释成一句话，并举 2 个正当用例（套利、再融资）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「闪电贷（Flash Loan）：原子性、攻击面与防护」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 26 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 26（周五）- 协议安全与应急：暂停、黑名单、升级、事故复盘</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>把安全从“工程问题”拉回“产品与运营问题”：风险开关、监控、应急预案、事后复盘 。
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能说清暂停在 DeFi 里为什么重要但也有治理风险</li>
+            <li>能写出一次事故复盘的 5 个核心章节</li>
+            <li>能用 5 分钟复盘：把安全从工程问题拉回产品与运营问题：风险开关、监控、应急预案、事后复盘。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://docs.openzeppelin.com/contracts/api/security#Pausable" target="_blank">OpenZeppelin：Pausable（暂停/熔断）</a></li>
+            <li>[文档] <a href="https://docs.openzeppelin.com/contracts/api/governance#TimelockController" target="_blank">OpenZeppelin：TimelockController（延时执行）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/results?search_query=OpenZeppelin+TimelockController+Pausable+explained" target="_blank">OpenZeppelin Timelock/Pausable（YouTube检索）</a></li>
+        </ul>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>在 OpenZeppelin 文档里阅读 Pausable/Timelock：写下它们解决的产品问题（熔断/延时/治理透明）。</li>
+            <li>挑 1 个协议找它的 pause/emergencyAdmin/timelock 地址（官网/文档）：截图 1 张。</li>
+            <li>写 1 段：PM 如何设计“应急响应”不伤用户信任（公告、回滚边界、补偿策略）。</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请说明：暂停在 DeFi 里为什么重要但也有治理风险</li>
+            <li>实作回顾：写出一次事故复盘的 5 个核心章节（你最终产出的内容是什么？）</li>
+            <li>请说明： 5 分钟复盘：把安全从工程问题拉回产品与运营问题：风险开关、监控、应急预案、事后复盘</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「在 OpenZeppelin 文档里阅读 Pausable/Timelock：写下它们解决的产品问题（熔断/延时/治理透明）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「挑 1 个协议找它的 pause/emergencyAdmin/timelock 地址（官网/文档）：截图 1 张」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 段：PM 如何设计“应急响应”不伤用户信任（公告、回滚边界、补偿策略）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「协议安全与应急：暂停、黑名单、升级、事故复盘」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 27 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 27（周六）- 治理与激励：投票、提案、贿选与 Curve Wars</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>理解治理的运转方式（论坛->提案->投票->执行）与激励设计对流动性的影响。
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能解释为什么投票权和经济价值不总是对齐</li>
+            <li>能说清激励补贴会带来哪些副作用（短期流动性/女巫）</li>
+            <li>能用 5 分钟复盘：理解治理的运转方式（论坛->提案->投票->执行）与激励设计对流动性的影响。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://docs.openzeppelin.com/contracts/api/governance" target="_blank">OpenZeppelin：Governor（治理合约）</a></li>
+            <li>[文档] <a href="https://docs.openzeppelin.com/contracts/api/governance#TimelockController" target="_blank">OpenZeppelin：TimelockController（延时执行）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/results?search_query=DAO+governance+token+voting+proposal" target="_blank">DAO 治理机制（YouTube检索）</a></li>
+        </ul>
+
+        <!-- 2026 补齐模块 -->
+        <div class="extension-box">
+            <div class="extension-title">🟢 2026 行业环境补齐：Pendle 收益层博弈与积分大战 (Points)</div>
+            <p><strong>背景补充：</strong>2026 年，Curve Wars 的范式已演进至 <strong>Pendle Wars（收益率拆分与贿选）</strong>和各大协议的 <strong>Points (积分)</strong> 体系。作为 PM，你的治理设计必须考虑对 LRT/生息稳定币的激励争夺。</p>
+            <ul>
+                <li>[新增必会] 解释 PT (本金代币) 与 YT (收益代币) 的分离逻辑，以及 vePENDLE 如何引导收益流向。</li>
+                <li>[资源] <a href="https://docs.pendle.finance/" target="_blank">Pendle Docs: PT/YT & vePendle</a></li>
+                <li>[视频] <a href="https://www.youtube.com/results?search_query=Pendle+finance+yield+trading+explained" target="_blank">YouTube: Pendle Finance Yield Trading Explained</a></li>
+            </ul>
+            <div class="pm-scenario">
+                <strong>💡 PM 实战拷问：</strong>你的新协议发行了一种计息代币。为了吸引大户，你决定将代币接入 Pendle 并花钱“贿赂” vePENDLE 选民。请问这种依靠购买选票来维持高 APY 的冷启动策略，长期来看会面临什么样的“死亡螺旋”风险？
+            </div>
+        </div>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>阅读 OpenZeppelin Governor：搞清 proposal、quorum、vote delay/period、 timelock 的含义。</li>
+            <li>找 1 个 DAO proposal（任意）：写出“提案要解决什么、成本是什么、如何衡量效果”。</li>
+            <li>写 1 张“治理攻击/”：品如何降低（延、快照、代表制、控）。</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能解释为什么投票权和经济价值不总是对齐</li>
+            <li>请说明：激励补贴会带来哪些副作用（短期流动性/女巫）</li>
+            <li>请说明： 5 分钟复盘：理解治理的运转方式（论坛->提案->投票->执行）与激励设计对流动性的影响</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「阅读 OpenZeppelin Governor：搞清 proposal、quorum、vote delay/period、 timelock 的含义」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「找 1 个 DAO proposal（任意）：写出“提案要解决什么、成本是什么、如何衡量效果”」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 张“治理攻击/”：品如何降低（延、快照、代表制、控）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「治理与激励：投票、提案、贿选与 Curve Wars」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 28 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 28（周日）- Week 4 复盘：Lending Teardown + 上架资产风控包</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>把借贷机制转成中高级 PM 可交付的“风控+产品方案”。
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能回答为什么这个 LTV 不是更高/更低</li>
+            <li>能讲清你设计的监控如何提前发现风险 Web3 / DeFi / 稳定币产品经理 8 周成长路线（可落地版） 第 14 页第 5 周：稳定币专项：机制、风险、支付清结算（稳定币 PM 核心） 本周交付物：作品集 #5：稳定币风险矩阵 + Terra 复盘 + Circle Mint 流程图</li>
+            <li>能用 5 分钟复盘：把借贷机制转成中高级 PM 可交付的风控+产品方案。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://aave.com/docs" target="_blank">Aave Docs（官方）</a></li>
+            <li>[文档] <a href="https://aave.com/help/liquidations-explained" target="_blank">Aave：Liquidations explained（官方帮助）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/@Finematics" target="_blank">Finematics（DeFi 系列视频/文章）</a></li>
+        </ul>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>完成 1 份借贷协议风险备忘录：参数如何设、遇到极端波动怎么处理、清算是否足 。</li>
+            <li>补齐面试讲述：用 2 分钟解释“健康因子”和“清算”对用户意味着什么。</li>
+            <li>整理 Week4 学到的参数/风险清单，后续写 PRD 会用到。</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能回答为什么这个 LTV 不是更高/更低</li>
+            <li>请解释：能讲清你设计的监控如何提前发现风险 ... 本周交付物：作品集 #5：稳定币风险矩阵 + Terra 复盘 + Circle Mint 流程图</li>
+            <li>请说明： 5 分钟复盘：把借贷机制转成中高级 PM 可交付的风控+产品方案</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「完成 1 份借贷协议风险备忘录：参数如何设、遇到极端波动怎么处理、清算是否足 」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「补齐面试讲述：用 2 分钟解释“健康因子”和“清算”对用户意味着什么」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「整理 Week4 学到的参数/风险清单，后续写 PRD 会用到」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「Week 4 复盘：Lending Teardown + 上架资产风控包」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+</div>
+
+</body>
+</html>

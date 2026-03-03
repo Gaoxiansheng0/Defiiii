@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>60天 DeFi & 稳定币 PM 学习计划 | Week 5-6 完整版</title>
+    <style>
+        :root {
+            --primary: #1E3A8A;
+            --secondary: #2563EB;
+            --accent: #10B981;
+            --bg-main: #F4F7F6;
+            --bg-card: #FFFFFF;
+            --text-main: #334155;
+            --text-light: #64748B;
+            --border: #E2E8F0;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+            background-color: var(--bg-main); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            padding: 2rem 1rem; 
+        }
+        
+        .container { max-width: 900px; margin: 0 auto; }
+        
+        .header { text-align: center; margin-bottom: 3rem; }
+        .header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 800; }
+        .header p { color: var(--text-light); font-size: 1.05rem; }
+        
+        .week-title { 
+            font-size: 1.8rem; 
+            color: var(--primary); 
+            border-bottom: 3px solid var(--primary); 
+            padding-bottom: 0.5rem; 
+            margin: 3rem 0 2rem 0; 
+            font-weight: 700;
+        }
+        
+        .day-card { 
+            background: var(--bg-card); 
+            border: 1px solid var(--border); 
+            border-radius: 12px; 
+            padding: 2rem; 
+            margin-bottom: 2rem; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); 
+            transition: box-shadow 0.2s ease;
+        }
+        .day-card:hover { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); }
+        
+        .day-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; border-bottom: 1px dashed var(--border); padding-bottom: 1rem;}
+        .day-title { font-size: 1.35rem; font-weight: 700; color: var(--primary); }
+        .time-badge { background: #EEF2FF; color: var(--secondary); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; white-space: nowrap; margin-left: 1rem;}
+        
+        .target-box { background: #F8FAFC; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; color: #475569; font-weight: 500; }
+        
+        .section-title { font-size: 1.1rem; font-weight: 600; color: var(--secondary); margin: 1.5rem 0 0.5rem 0; display: flex; align-items: center; }
+        .section-title::before { content: ''; display: inline-block; width: 4px; height: 16px; background-color: var(--secondary); margin-right: 8px; border-radius: 2px;}
+        
+        ul { margin-left: 1.5rem; color: var(--text-main); }
+        li { margin-bottom: 0.4rem; }
+        
+        ol { margin-left: 1.5rem; color: var(--text-main); }
+        ol li { margin-bottom: 0.4rem; }
+
+        a { color: var(--secondary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        /* 2026 行业环境补齐模块样式 */
+        .extension-box { 
+            background: #ECFDF5; 
+            border-left: 5px solid var(--accent); 
+            padding: 1.5rem; 
+            border-radius: 0 8px 8px 0; 
+            margin-top: 2rem; 
+        }
+        .extension-title { color: #047857; font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;}
+        .extension-box ul { color: #065F46; }
+        .extension-box a { color: #047857; font-weight: 600; text-decoration: underline; }
+        .pm-scenario { background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px; margin-top: 1rem; font-size: 0.95rem; color: #064E3B; border: 1px dashed #6EE7B7; font-weight: 500;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>60天 DeFi & 稳定币 PM 学习计划</h1>
+        <p>（Week 5-6 原文完整保留 + 2026 行业真实环境精准补齐）</p>
+    </div>
+
+    <!-- WEEK 5 -->
+    <h2 class="week-title">Week 5：稳定币专项：机制、风险、支付清结算</h2>
+
+    <!-- Day 29 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 29（周一）- 稳定币总览：为什么稳定币是 Web3 的“现金层”</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>建立稳定币分类与风险框架：法币抵押/加密抵押/算法/合成，以及 peg 维护手段（赎回、
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能解释为什么可赎回是法币稳定币最关键的锚</li>
+            <li>能说清稳定币的最小闭环是什么（发行-流通-赎回）</li>
+            <li>能用 5 分钟复盘：建立稳定币分类与风险框架：法币抵押/加密抵押/算法/合成，以及 peg 维护手段（赎回、 套利、清算）。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://www.imf.org/en/-/media/files/publications/dp/2025/english/usea.pdf" target="_blank">IMF（2025.12）：Understanding Stablecoins（全景+风险+监管框架）</a></li>
+            <li>[文档] <a href="https://www.bis.org/publ/bisbull108.htm" target="_blank">BIS Bulletin 108（2025.07）：Stablecoin growth</a></li>
+            <li>[文档] <a href="https://developers.circle.com/circle-mint/introducing-circle-mint" target="_blank">Circle Mint：Introducing Circle Mint（发行/赎回/结算产品概览）</a></li>
+            <li>[文档] <a href="https://developers.sky.money/" target="_blank">MakerDAO Docs / Sky Protocol Docs（去中心化稳定币体系）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/results?search_query=stablecoin+mechanism" target="_blank">Stablecoin 机制概览（YouTube检索）</a></li>
+        </ul>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>输出 stablecoin 分类表（法币抵押/加密抵押/超额抵押/算法/合成）：每类至少举 2 个例子。</li>
+            <li>写 1 张“稳定币风险矩阵”：资产风险、机制风险、治理风险、合规风险、流动性风险。</li>
+            <li>选 1 个你最熟的稳定币，作为 capstone 的潜在底层资产。</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能解释为什么可赎回是法币稳定币最关键的锚</li>
+            <li>请说明：稳定币的最小闭环是什么（发行-流通-赎回）</li>
+            <li>请说明： 5 分钟复盘：建立稳定币分类与风险框架：法币抵押/加密抵押/算法/合成，以及 peg 维护手段（赎回、 套利、清算）</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「输出 stablecoin 分类表（法币抵押/加密抵押/超额抵押/算法/合成）：每类至少举 2 个例子」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 张“稳定币风险矩阵”：资产风险、机制风险、治理风险、合规风险、流动性风险」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「选 1 个你最熟的稳定币，作为 capstone 的潜在底层资产」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「稳定币总览：为什么稳定币是 Web3 的“现金层”」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 30 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 30（周二）- 法币稳定币：USDC/USDT 的发行、赎回、储备与黑名单</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>理解中心化稳定币的产品能力边界：可冻结/可升级/合规入口，以及这对 DeFi 可组合性的影响。
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能解释为什么可冻结既是合规能力也是 DeFi 风险</li>
+            <li>能列出 3 个衡量稳定币健康度的指标</li>
+            <li>能用 5 分钟复盘：理解中心化稳定币的产品能力边界：可冻结/可升级/合规入口， 以及这对 DeFi 可组合性的影响。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://www.circle.com/transparency" target="_blank">Circle：USDC Transparency（储备/披露/审计/周度持仓与铸销）</a></li>
+            <li>[文档] <a href="https://help.circle.com/s/article/Tokenizing-and-redeeming-USDC" target="_blank">Circle Help：Tokenizing & Redeeming USDC（铸造/赎回概念与流程）</a></li>
+            <li>[文档] <a href="https://tether.to/en/transparency/" target="_blank">Tether：Transparency（USDT 储备披露与流通数据）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/results?search_query=USDC+mint+redeem+how+it+works" target="_blank">Stablecoin 发行/赎回与风控（YouTube检索）</a></li>
+        </ul>
+
+        <!-- 2026 补齐模块：RWA -->
+        <div class="extension-box">
+            <div class="extension-title">🟢 2026 行业环境补齐：RWA（链上美债）与生息稳定币</div>
+            <p><strong>背景补充：</strong>2026年，纯法币储备的稳定币（如 USDC）正面临 <strong>RWA 生息稳定币（如 Ondo USDY, Mountain USDM, BlackRock BUIDL）</strong> 的降维打击。PM 必须掌握生息资产在产品侧的表现形式。</p>
+            <ul>
+                <li>[新增必会] 理解 Rebase（弹性供应：钱包里币的数量自动增加）与 Reward-bearing（净值型：币数不变但单币价值增加）对底层结算产品设计的致命影响。</li>
+                <li>[资源] <a href="https://docs.ondo.finance/" target="_blank">Ondo Finance Docs (USDY/OUSG)</a></li>
+                <li>[视频] <a href="https://www.youtube.com/results?search_query=Blackrock+BUIDL+Ondo+RWA+explained" target="_blank">YouTube: RWA & Tokenized Treasuries Explained</a></li>
+            </ul>
+            <div class="pm-scenario">
+                <strong>💡 PM 实战拷问：</strong>你的钱包产品决定接入一种采用 Rebase 机制的生息稳定币（用户的余额每天会自动增加）。但这会导致该资产无法在传统的 AMM (如 Uniswap V2) 中提供流动性，为什么？你在钱包的前端余额读取逻辑上需要做哪些改造？
+            </div>
+        </div>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>阅读 Circle Mint Overview：梳理发行/赎回/结算的业务流程（用流程图）。</li>
+            <li>把 US 合规要点列成 checklist（储备、披露、赎回、KYC、审计）。</li>
+            <li>写 1 段：中心化稳定币的产品优势（支付、结算）与单点风险。</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能解释为什么可冻结既是合规能力也是 DeFi 风险</li>
+            <li>请解释：能列出 3 个衡量稳定币健康度的指标</li>
+            <li>请说明： 5 分钟复盘：理解中心化稳定币的产品能力边界：可冻结/可升级/合规入口， 以及这对 DeFi 可组合性的影响</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「阅读 Circle Mint Overview：梳理发行/赎回/结算的业务流程（用流程图）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「把 US 合规要点列成 checklist（储备、披露、赎回、KYC、审计）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 段：中心化稳定币的产品优势（支付、结算）与单点风险」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「法币稳定币：USDC/USDT 的发行、赎回、储备与黑名单」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 31 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 31（周三）- Circle Mint 与机构侧流程：mint/redeem/结算/对账</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>把稳定币从“DeFi 代币”拉回“支付与清结算产品”：开户、入金、铸币、赎回、 限额、 对账。
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能解释为什么需要幂等（idempotency）</li>
+            <li>能列出 5 个会让支付链路失败的原因（银行/链上/风控）</li>
+            <li>能用 5 分钟复盘：把稳定币从DeFi 代币拉回支付与清结算产品：开户、入金、铸币、赎回、限额、 对账。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://developers.circle.com/circle-mint/introducing-circle-mint" target="_blank">Circle Mint：Introducing Circle Mint（产品概览）</a></li>
+            <li>[文档] <a href="https://help.circle.com/s/article/USDC-redemption-structure" target="_blank">Circle Help：USDC / EURC redemption structure（赎回分层/费用/限制）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/results?search_query=Circle+Mint+API+tutorial+USDC+issuance" target="_blank">Circle Mint / USDC Issuance（YouTube检索）</a></li>
+        </ul>
+
+        <!-- 2026 补齐模块：PayFi -->
+        <div class="extension-box">
+            <div class="extension-title">🟢 2026 行业环境补齐：PayFi（支付金融）与巨头集成</div>
+            <p><strong>背景补充：</strong>2026年稳定币最大的爆发点在于 <strong>PayFi（支付即金融）</strong>。Stripe、PayPal 已经全面开放 Crypto 支付网关。作为产品经理，不仅要懂链上逻辑，更要懂传统支付的网关（Gateway）集成逻辑。</p>
+            <ul>
+                <li>[新增必会] 理解 Stripe Crypto Pay-ins 或 Solana Pay 的 Checkout Session 流转状态（Pending, Completed, Failed）。</li>
+                <li>[资源] <a href="https://docs.stripe.com/crypto" target="_blank">Stripe Docs: Crypto Pay-ins / Pay-outs</a></li>
+                <li>[资源] <a href="https://docs.solanapay.com/" target="_blank">Solana Pay Documentation</a></li>
+            </ul>
+            <div class="pm-scenario">
+                <strong>💡 PM 实战拷问：</strong>你的电商平台接入了 USDC 支付网关。用户在以太坊主网上支付了 100 USDC，但由于 Gas 费飙升，交易被卡在 Mempool 中达 30 分钟。此时订单已在业务系统内超时取消。作为 PM，你的对账和退款（Refund）产品流应该怎么设计？
+            </div>
+        </div>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>把 '发行→流通→赎回→销毁' 画成状态机（state machine），标出每一步的参与方 （用户、发行方、银行、链上合约）。</li>
+            <li>列出 5 个运营/风控指标（净发行、赎回压力、链上活跃地址、跨链供给、二级市场折溢价）。</li>
+            <li>写 1 张“极端挤兑”应急预案草案。</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能解释为什么需要幂等（idempotency）</li>
+            <li>请解释：能列出 5 个会让支付链路失败的原因（银行/链上/风控）</li>
+            <li>请说明： 5 分钟复盘：把稳定币从DeFi 代币拉回支付与清结算产品：开户、入金、铸币、赎回、限额、 对账</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「把 '发行→流通→赎回→销毁' 画成状态机（state machine），标出每一步的参与方 （用户、发行方、银行、链上合约）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「列出 5 个运营/风控指标（净发行、赎回压力、链上活跃地址、跨链供给、二级市场折溢价）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 张“极端挤兑”应急预案草案」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「Circle Mint 与机构侧流程：mint/redeem/结算/对账」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 32 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 32（周四）- 加密抵押稳定币：Maker DAI / Aave GHO 的机制与风控</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>理解超额抵押稳定币如何通过清算维持偿付能力，以及参数（抵押率、稳定费、PSM 等） 如何影响
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能解释为什么抵押品波动会直接影响稳定币安全</li>
+            <li>能说清稳定费/借贷利率如何影响供给与 peg</li>
+            <li>能用 5 分钟复盘：理解超额抵押稳定币如何通过清算维持偿付能力，以及参数 （抵押率、稳定费、PSM 等） 如何影响 peg。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://developers.sky.money/" target="_blank">Sky Protocol Docs（USDS/SKY；Maker 体系最新文档入口）</a></li>
+            <li>[文档] <a href="https://docs.makerdao.com/" target="_blank">MakerDAO Docs（DAI/CDP；历史与机制细节）</a></li>
+            <li>[文档] <a href="https://docs.gho.xyz/" target="_blank">Aave GHO Docs（稳定币机制与 Facilitator）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/results?search_query=MakerDAO+USDS+GHO+stablecoin+mechanism" target="_blank">MakerDAO / USDS / GHO 机制（YouTube检索）</a></li>
+        </ul>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>阅读 Maker CDP：用一句话解释 DAI 如何保持锚定（超额抵押 + 清算 + 市场套利）。</li>
+            <li>阅读 GHO 文档：总结它和 DAI 在“铸造/毁 /利率/治理”上的差异。</li>
+            <li>写 1 段：为什么去中心化稳定币更依赖风险参数与治理质量？</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能解释为什么抵押品波动会直接影响稳定币安全</li>
+            <li>请说明：稳定费/借贷利率如何影响供给与 peg</li>
+            <li>请说明： 5 分钟复盘：理解超额抵押稳定币如何通过清算维持偿付能力，以及参数 （抵押率、稳定费、PSM 等） 如何影响 peg</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「阅读 Maker CDP：用一句话解释 DAI 如何保持锚定（超额抵押 + 清算 + 市场套利）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「阅读 GHO 文档：总结它和 DAI 在“铸造/毁 /利率/治理”上的差异」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 段：为什么去中心化稳定币更依赖风险参数与治理质量？」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「加密抵押稳定币：Maker DAI / Aave GHO 的机制与风控」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 33, Day 34, Day 35 省略重复的展示代码，仅作结构预留。以下展示 Day 34 -->
+    
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 34（周六）- 合成美元：Ethena USDe（delta-neutral / cash-and-carry）</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>理解“期现对冲”稳定币的收益来源与风险（基差、交易对手、清算、资金费率）。
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能解释 cash-and-carry 的基本逻辑（买现货+卖期货）</li>
+            <li>能说清为什么高收益往往意味着隐藏风险</li>
+            <li>能用 5 分钟复盘：理解期现对冲稳定币的收益来源与风险（基差、交易对手、清算、资金费率）。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能解释 cash-and-carry 的基本逻辑（买现货+卖期货）</li>
+            <li>请说明：为什么高收益往往意味着隐藏风险</li>
+            <li>请说明： 5 分钟复盘：理解期现对冲稳定币的收益来源与风险（基差、交易对手、清算、资金费率）</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「阅读 Ethena：用自然语言解释 cash-and-carry/对冲思路，以及收益来源（资金费率等）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「列出 5 个关键风险：交易对手、对冲失效、资金费率反转、托管/结算、合规」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 张“收益型稳定币”产品注意事项卡片」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「carry）」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 35 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 35（周日）- Terra/Luna 崩盘复盘：算法稳定币为什么会进入死亡螺旋</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>把稳定币风险框架落到真实案例：锚定机制、流动性、市场信心、挤兑与死亡螺旋。
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能讲清死亡螺旋的 4 步</li>
+            <li>能回答如果你是 PM，当时你会加什么风险阀门 Web3 / DeFi / 稳定币产品经理 8 周成长路线（可落地版） 第 17 页第 6 周：跨链、支付、合规与数据（让你像在真实岗位上工作） 本周交付物：作品集 #6：跨链流程图 + 合规控制点清单 + 数据 Dashboard + 周报模板</li>
+            <li>能用 5 分钟复盘：把稳定币风险框架落到真实案例：锚定机制、流动性、市场信心、死亡螺旋。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能讲清死亡螺旋的 4 步</li>
+            <li>请解释：能回答如果你是 PM，当时你会加什么风险阀门 Web3 / DeFi / 稳定币产品经理 8 周成长路线（可落地版） 第 17 页第 6 周：跨链、支付、合规与数据（让你像在真实岗位上工作） 本周交付物：作品集 #6：跨链流程图 + 合规控制点清单 + 数据 Dashboard + 周报模板</li>
+            <li>请说明： 5 分钟复盘：把稳定币风险框架落到真实案例：锚定机制、流动性、市场信心、死亡螺旋</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「做 Terra/UST 时间线：从锚定开始到崩盘，按小时/天列关键节点」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 段：死亡螺旋的触发条件是什么？如果你是 PM，哪些指标能提前预警？」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「把这个案例映射到你自己的稳定币风控 checklist」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「Terra/Luna 崩盘复盘：算法稳定币为什么会进入死亡螺旋」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- WEEK 6 -->
+    <h2 class="week-title" style="margin-top: 3rem;">Week 6：跨链、L2、合规与数据</h2>
+
+    <!-- Day 36 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 36（周一）- L2 & Rollups：扩容、用户成本与跨链的产品取舍</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>理解 rollup 的基本模型与安全假设，并能在产品设计中做出 L1/L2 取舍（成本/安全/流动性）。
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能解释 optimistic vs zk 的差异（概念层面）</li>
+            <li>能列出 3 个选择链时必须问的问题（安全/流动性/生态）</li>
+            <li>能用 5 分钟复盘：理解 rollup 的基本模型与安全假设，并能在产品设计中做出 L1/L2 取舍（成本/安全/流动性）。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://ethereum.org/en/developers/docs/scaling/optimistic-rollups/" target="_blank">Ethereum.org：Optimistic Rollups</a></li>
+            <li>[文档] <a href="https://l2beat.com/stages" target="_blank">L2BEAT：Stages Framework</a></li>
+            <li>[视频] <a href="https://www.youtube.com/results?search_query=rollups+explained" target="_blank">Rollup/L2 基础（YouTube检索）</a></li>
+        </ul>
+
+        <!-- 2026 补齐模块：L2 AppChains -->
+        <div class="extension-box">
+            <div class="extension-title">🟢 2026 行业环境补齐：Superchain 与应用链 (AppChains) 时代</div>
+            <p><strong>背景补充：</strong>2026 年，顶级应用不再只作为 DApp 部署，而是使用 <strong>OP Stack (如 Base)</strong> 或 <strong>Arbitrum Orbit</strong> 一键发链。L2 的流动性割裂成为最大的 UX 阻碍。</p>
+            <ul>
+                <li>[新增必会] 理解 Optimism Superchain 的“共享排序器 (Shared Sequencer)” 如何实现跨 L2 无缝交互。</li>
+                <li>[资源] <a href="https://docs.optimism.io/stack/explainer" target="_blank">Optimism Docs: OP Stack Explainer</a></li>
+                <li>[视频] <a href="https://www.youtube.com/results?search_query=Superchain+Optimism+Base+explained" target="_blank">YouTube: Superchain & Base Explained</a></li>
+            </ul>
+        </div>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>在 L2BEAT 选 2 条 L2：对比 stage、风险假设、升级权限、证明类型 （fraud/validity）。</li>
+            <li>写 1 段：L2 对稳定币/DeFi 产品的意义（成本、用户量、桥接风险）。</li>
+            <li>补充：用 3 句话解释“数据可用性”为什么是 L2 成本关键。</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能解释 optimistic vs zk 的差异（概念层面）</li>
+            <li>请解释：能列出 3 个选择链时必须问的问题（安全/流动性/生态）</li>
+            <li>请说明： 5 分钟复盘：理解 rollup 的基本模型与安全假设，并能在产品设计中做出 L1/L2 取舍（成本/安全/流动性）</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「在 L2BEAT 选 2 条 L2：对比 stage、风险假设、升级权限、证明类型 （fraud/validity）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 段：L2 对稳定币/DeFi 产品的意义（成本、用户量、桥接风险）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「补充：用 3 句话解释“数据可用性”为什么是 L2 成本关键」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「L2 & Rollups：扩容、用户成本与跨链的产品取舍」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 38 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 38（周三）- USDC 跨链：CCTP 与链抽象（Bridge Kit）</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>理解 burn/mint 跨链的好处（不需要流动性池、减少 wrapped 资产风险）与集成要点。 Web3 / DeFi /
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能解释 CCTP 相比传统桥的核心差异</li>
+            <li>能说清跨链产品为什么要做状态机可视化（pending/confirmed）</li>
+            <li>能用 5 分钟复盘：理解 burn/mint 跨链的好处（不需要流动性池、减少 wrapped 资产风险）与集成要点。 Web3 / DeFi / 稳定币产品经理 8 周成长路线 （可落地版） 第 18 页</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://developers.circle.com/cctp" target="_blank">Circle CCTP（跨链 USDC Burn/Mint；V2）</a></li>
+            <li>[文档] <a href="https://developers.circle.com/gateway" target="_blank">Circle Gateway（统一跨链 USDC 余额；链抽象）</a></li>
+        </ul>
+
+        <!-- 2026 补齐模块：链抽象 -->
+        <div class="extension-box">
+            <div class="extension-title">🟢 2026 行业环境补齐：链抽象 (Chain Abstraction) 与清算网络</div>
+            <p><strong>背景补充：</strong>2026年，**“桥(Bridges)”在 C 端产品中已死**。用户只需签署一个意图，后端会通过 <strong>Clearing Networks (清算网络，如 Everclear, UniswapX)</strong> 垫资并在底层调用 CCTP 结算。</p>
+            <ul>
+                <li>[新增必会] 理解什么是 Chain Abstraction（让用户感知不到自己在哪条链上，统一余额）。</li>
+                <li>[资源] <a href="https://docs.everclear.org/" target="_blank">Everclear Docs: Clearing Network for Intents</a></li>
+                <li>[视频] <a href="https://www.youtube.com/results?search_query=Chain+Abstraction+Intents+explained" target="_blank">YouTube: Chain Abstraction & Intents Explained</a></li>
+            </ul>
+            <div class="pm-scenario">
+                <strong>💡 PM 实战拷问：</strong>你的应用采用“链抽象”架构：用户在 Arbitrum 上的钱包只有 USDC，但他点击“购买”直接买到了 Base 上的某 NFT。在这个过程中，后台的 Solver 垫付了资金，之后跨链结算。如果 CCTP 底层结算出现延迟，谁承担风险？你的前端产品界面应该怎么向用户展示状态？
+            </div>
+        </div>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>读 CCTP getting started：画 1 张跨链转账时序图（burn→attestation→mint）。</li>
+            <li>列出 5 个产品落地问题：跨链时间、失败重试、费用承担、限额、风控拦截。</li>
+            <li>写 1 段：为什么稳定币跨链是 PayFi/结算类产品的核心基建。</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能解释 CCTP 相比传统桥的核心差异</li>
+            <li>请说明：跨链产品为什么要做状态机可视化（pending/confirmed）</li>
+            <li>请说明： 5 分钟复盘：理解 burn/mint 跨链的好处（不需要流动性池、减少 wrapped 资产风险）与集成要点。 Web3 / DeFi / 稳定币产品经理 8 周成长路线 （可落地版） 第 18 页</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「读 CCTP getting started：画 1 张跨链转账时序图（burn→attestation→mint）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「列出 5 个产品落地问题：跨链时间、失败重试、费用承担、限额、风控拦截」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 段：为什么稳定币跨链是 PayFi/结算类产品的核心基建」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「USDC 跨链：CCTP 与链抽象（Bridge Kit）」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+    <!-- Day 39 -->
+    <div class="day-card">
+        <div class="day-header">
+            <h3 class="day-title">Day 39（周四）- 合规与风控入门：AML/CFT、制裁、MiCA</h3>
+            <span class="time-badge">约 210 分钟</span>
+        </div>
+        <div class="target-box">
+            <strong>学完目标：</strong>建立稳定币/支付产品的合规常识：KYC/KYB、制裁筛查、旅行规则（Travel Rule）等在产
+        </div>
+        
+        <div class="section-title">今日必会（学完必须能做到）</div>
+        <ul>
+            <li>能区分‘合规要求’与‘产品体验’的冲突点</li>
+            <li>能说清为什么‘可冻结/可追踪’是稳定币支付的现实要求</li>
+            <li>能用 5 分钟复盘：建立稳定币/支付产品的合规常识：KYC/KYB、制裁筛查、旅行规则（Travel Rule）等在产品上如何落地。</li>
+            <li>能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+        </ul>
+
+        <div class="section-title">学习资源（2026）</div>
+        <ul>
+            <li>[文档] <a href="https://www.fatf-gafi.org/en/topics/virtual-assets.html" target="_blank">FATF：Targeted update on implementation of the FATF Standards（含 Travel Rule/虚拟资产）</a></li>
+            <li>[文档] <a href="https://ofac.treasury.gov/recent-actions/20211015" target="_blank">OFAC：Sanctions Compliance Guidance for the Virtual Currency Industry</a></li>
+            <li>[文档] <a href="https://eur-lex.europa.eu/eli/reg/2023/1114/oj" target="_blank">EU：MiCA Regulation（EUR-Lex 法规正文）</a></li>
+            <li>[视频] <a href="https://www.youtube.com/results?search_query=MiCA+stablecoin+Travel+Rule+FATF+explained" target="_blank">MiCA/Stablecoin/Travel Rule（YouTube检索）</a></li>
+        </ul>
+
+        <div class="section-title">动手任务（必做）</div>
+        <ul>
+            <li>把 FATF/OFAC/MiCA 里与你产品最相关的条款提炼成 1 页 checklist（不要抄原文）。</li>
+            <li>写 1 段：KYC/KYT 在不同产品形态（钱包、借贷、稳定币发行）中的落点差异。</li>
+            <li>设计 1 个“风控拦截”流程：命中制裁地址/高风险地址时前端/后端/链上如何处理。</li>
+        </ul>
+
+        <div class="section-title">自测题（建议闭卷）</div>
+        <ol>
+            <li>请解释：能区分‘合规要求’与‘产品体验’的冲突点</li>
+            <li>请说明：为什么‘可冻结/可追踪’是稳定币支付的现实要求</li>
+            <li>请说明： 5 分钟复盘：建立稳定币/支付产品的合规常识：KYC/KYB、制裁筛查、旅行规则（Travel Rule）等在产品上如何落地</li>
+            <li>请解释：能把机制落到产品：画出用户/资金/数据流，并标出 3 个风控点</li>
+            <li>动手复盘：你完成了「把 FATF/OFAC/MiCA 里与你产品最相关的条款提炼成 1 页 checklist（不要抄原文）」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「写 1 段：KYC/KYT 在不同产品形态（钱包、借贷、稳定币发行）中的落点差异」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>动手复盘：你完成了「设计 1 个“风控拦截”流程：命中制裁地址/高风险地址时前端/后端/链上如何处理」吗？关键步骤与结果（1-3 个要点）是什么？</li>
+            <li>落地思考：如果让你把「合规与风控入门：AML/CFT、制裁、MiCA」做成一个产品功能/流程，你会新增哪 3 条风控或可用性提示？为什么？</li>
+        </ol>
+    </div>
+
+</div>
+
+</body>
+</html>
